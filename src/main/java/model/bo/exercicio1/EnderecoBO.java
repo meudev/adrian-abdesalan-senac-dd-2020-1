@@ -13,10 +13,10 @@ public class EnderecoBO {
 
 		ClienteDAO clienteDAO = new ClienteDAO();
 		if (clienteDAO.temClienteMorandoNoEndereco(idSelecionado)) {
-			mensagem = "EndereÃ§o informado nÃ£o pode ser excluÃ­do, pois existe cliente morando nele.";
+			mensagem = "Endereço informado não pode ser excluí­do, pois existe cliente morando nele.";
 		} else {
 			if (dao.excluir(idSelecionado)) {
-				mensagem = "ExcluÃ­do com sucesso";
+				mensagem = "Excluí­do com sucesso";
 			} else {
 				mensagem = "Erro ao excluir";
 			}
@@ -39,5 +39,5 @@ public class EnderecoBO {
 		return mensagem;
 	}
 
-	// TODO criar os mÃ©todos para chamar os mÃ©todos PÃšBLICOS no EnderecoDAO
+	// TODO criar os métodos para chamar os métodos PÚBLICOS no EnderecoDAO
 }

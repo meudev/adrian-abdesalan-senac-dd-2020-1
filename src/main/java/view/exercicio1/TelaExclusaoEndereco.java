@@ -47,7 +47,7 @@ public class TelaExclusaoEndereco {
 	 */
 	private void initialize() {
 		frmExclusaoEnderecos = new JFrame();
-		frmExclusaoEnderecos.setTitle("Exclus√£o de endere√ßos");
+		frmExclusaoEnderecos.setTitle("Exclus„o de endereÁos");
 		frmExclusaoEnderecos.setBounds(100, 100, 310, 200);
 		frmExclusaoEnderecos.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmExclusaoEnderecos.getContentPane().setLayout(new MigLayout("", "[80px][10px][150px]", "[20px][70px]"));

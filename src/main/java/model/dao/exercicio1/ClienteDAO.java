@@ -137,10 +137,9 @@ public class ClienteDAO {
 
 	/**
 	 * 
-	 * Constr√≥i um objeto do tipo Cliente a partir de um registro do resultSet
+	 * ConstrÛi um objeto do tipo Cliente a partir de um registro do resultSet
 	 * 
-	 * @param resultadoDaConsulta o item do resultSet (isto √©, um registro da tabela
-	 *                            Cliente)
+	 * @param resultadoDaConsulta o item do resultSet (isto È, um registro da tabela Cliente)
 	 * @return um objeto do tipo Cliente
 	 * 
 	 */
@@ -177,7 +176,7 @@ public class ClienteDAO {
 			ResultSet rs = stmt.executeQuery();
 			cpfUsado = rs.next();
 		} catch (SQLException e) {
-			System.out.println("Erro ao verificar se CPF j√° foi usado. Causa: " + e.getMessage());
+			System.out.println("Erro ao verificar se CPF j· foi usado. Causa: " + e.getMessage());
 		}
 		
 		return cpfUsado;
@@ -194,26 +193,43 @@ public class ClienteDAO {
 			ResultSet rs = stmt.executeQuery();
 			enderecoJaUsado = rs.next();
 		} catch (SQLException e) {
-			System.out.println("Erro ao verificar se endere√ßo j√° foi usado. Causa: " + e.getMessage());
+			System.out.println("Erro ao verificar se endereÁo j· foi usado. Causa: " + e.getMessage());
 		}
 
 		return enderecoJaUsado;
 	}
 
-	public boolean excluirCPF(int cpfSelecionado) {
+	public boolean excluirCPF(String cpfSelecionado) {
 		String sql = " DELETE FROM cliente WHERE cpf = ?";
 
 		Connection conexao = Banco.getConnection();
 		PreparedStatement preparedStatement = Banco.getPreparedStatement(conexao, sql);
 		boolean excluiu = false;
 		try {
-			preparedStatement.setInt(1, cpfSelecionado);
+			preparedStatement.setString(1, cpfSelecionado);
 			int codigoRetornoUpdate = preparedStatement.executeUpdate();
 
 			excluiu = (codigoRetornoUpdate == Banco.CODIGO_RETORNO_SUCESSO_EXCLUSAO);
 		} catch (SQLException ex) {
-			System.out.println(" Erro ao excluir endere√ßo. Id: " + cpfSelecionado + " .Causa: " + ex.getMessage());
+			System.out.println(" Erro ao excluir Cliente. CPF: " + cpfSelecionado + " .Causa: " + ex.getMessage());
 		}
 		return excluiu;
+	}
+
+	public boolean temClienteTemTelefone(String cpfSelecionado) {
+		Connection conexao = Banco.getConnection();
+		String sql = " SELECT id FROM telefone WHERE idCliente in ( SELECT id FROM cliente WHERE cpf = '" + cpfSelecionado + "'";
+		PreparedStatement stmt = Banco.getPreparedStatement(conexao, sql);
+
+		boolean temTelefone = false;
+
+		try {
+			ResultSet rs = stmt.executeQuery();
+			temTelefone = rs.next();
+		} catch (SQLException e) {
+			System.out.println("Erro ao verificar se telefone cadastrado. Causa: " + e.getMessage());
+		}
+
+		return temTelefone;
 	}
 }

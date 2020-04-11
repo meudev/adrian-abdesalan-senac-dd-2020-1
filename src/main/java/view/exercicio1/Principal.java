@@ -94,11 +94,11 @@ public class Principal extends JFrame {
 		mntmExcluir_2.setIcon(new ImageIcon("D:\\FACULDADE\\Eclipse - Senac\\Icones\\icons8-remover-usuÃ¡rio-masculino-26.png"));
 		mnClientes.add(mntmExcluir_2);
 		
-		JMenuItem mntmRelatrio = new JMenuItem("RelatÃ³rio");
+		JMenuItem mntmRelatrio = new JMenuItem("Relatório");
 		mntmRelatrio.setIcon(new ImageIcon("D:\\FACULDADE\\Eclipse - Senac\\Icones\\icons8-documento-26.png"));
 		mnClientes.add(mntmRelatrio);
 		
-		JMenu mnProdutos = new JMenu("  EndereÃ§os     ");
+		JMenu mnProdutos = new JMenu("  Endereços     ");
 		mnProdutos.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		mnProdutos.setIcon(new ImageIcon("D:\\FACULDADE\\Eclipse - Senac\\Icones\\icons8-endereÃ§o-50.png"));
 		menuBar.add(mnProdutos);
@@ -125,7 +125,7 @@ public class Principal extends JFrame {
 		});
 		mnProdutos.add(mntmExcluir);
 		
-		JMenu mnFuncionrios = new JMenu("  NÃºmeros     ");
+		JMenu mnFuncionrios = new JMenu("  Números     ");
 		mnFuncionrios.setIcon(new ImageIcon("D:\\FACULDADE\\Eclipse - Senac\\Icones\\icons8-telefone-celular-50.png"));
 		mnFuncionrios.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		menuBar.add(mnFuncionrios);

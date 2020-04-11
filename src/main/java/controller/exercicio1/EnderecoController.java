@@ -19,7 +19,7 @@ public class EnderecoController {
 			int idSelecionado = Integer.parseInt(textoIdSelecionado);
 			mensagem = bo.excluir(idSelecionado);
 		} catch (NumberFormatException ex) {
-			mensagem = "Informe um nÃºmero inteiro";
+			mensagem = "Informe um número inteiro";
 		}
 		return mensagem;
 	}
@@ -27,7 +27,7 @@ public class EnderecoController {
 	public String salvar(String rua, String bairro, String numero, String cep, String cidade, String estado) {
 		String mensagem = "";
 
-		// ValidaÃ§Ãµes dos campos
+		// Validações dos campos
 		mensagem += validarCampoDeTexto("Rua", rua, TAMANHO_MINIMO_CAMPO_RUA, TAMANHO_MAXIMO_CAMPO_RUA, true);
 		mensagem += validarCampoDeTexto("Cidade", cidade, TAMANHO_MINIMO_CAMPO_CIDADE, TAMANHO_MAXIMO_CAMPO_CIDADE,
 				true);

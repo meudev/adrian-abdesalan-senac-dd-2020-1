@@ -59,7 +59,7 @@ public class TelaExclusaoCliente extends JFrame {
 	private void initialize() {
 		
 		frmExclusaoCliente = new JFrame();
-		frmExclusaoCliente.setTitle("Exclus√£o de Cliente");
+		frmExclusaoCliente.setTitle("Exclus„o de Cliente");
 		frmExclusaoCliente.setBounds(100, 100, 310, 200);
 		frmExclusaoCliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmExclusaoCliente.getContentPane().setLayout(new MigLayout("", "[80px][grow][][grow][10px][150px]", "[20px][70px]"));
@@ -93,7 +93,7 @@ public class TelaExclusaoCliente extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				ClienteController controladora = new ClienteController();
 
-				String mensagem = controladora.excluir(textCPF.getText());
+				String mensagem = controladora.excluirCPF(textCPF.getText());
 
 				JOptionPane.showMessageDialog(null, mensagem);
 			}

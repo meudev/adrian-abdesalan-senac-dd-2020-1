@@ -15,14 +15,15 @@ public class ClienteController {
 		return dao.consultarTodos();
 	}
 
-	public String excluir(String textCPF) {
+	public String excluirCPF(String textCPF) {
 		String mensagem = "";
-		try {
-			int cpfSelecionado = Integer.parseInt(textCPF);
-			mensagem = bo.excluir(cpfSelecionado);
-		} catch (NumberFormatException ex) {
-			mensagem = "Informe apenas n√∫meros. ";
+
+		if(textCPF.length() == 11) {
+			mensagem = bo.excluirCPF(textCPF);
+		} else {
+			mensagem = "CPF inv·lido. ";
 		}
+
 		return mensagem;
 	}
 }

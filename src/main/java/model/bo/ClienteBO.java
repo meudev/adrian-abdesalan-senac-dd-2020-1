@@ -15,7 +15,7 @@ public class ClienteBO {
 		String mensagem = "";
 		
 		if(dao.cpfJaUtilizado(cliente.getCpf())) {
-			mensagem = "CPF informado (" + cliente.getCpf() + ") jÃ¡ foi utilizado";
+			mensagem = "CPF informado (" + cliente.getCpf() + ") já foi utilizado";
 		}else {
 			cliente = dao.salvar(cliente);
 			
@@ -29,13 +29,17 @@ public class ClienteBO {
 		return mensagem;
 	}
 	
-	public String excluir(int cpfSelecionado) {
+	public String excluirCPF(String cpfSelecionado) {
 		String mensagem = "";
 
-		if (dao.excluirCPF(cpfSelecionado)) {
-			mensagem = "ExcluÃ­do com sucesso";
+		if (dao.temClienteTemTelefone(cpfSelecionado)) {
+			mensagem = "Cliente informado não pode ser excluí­do, pois existe telefone registrado em seu nome.";
 		} else {
-			mensagem = "Erro ao excluir";
+			if (dao.excluirCPF(cpfSelecionado)) {
+				mensagem = "Excluí­do com sucesso";
+			} else {
+				mensagem = "Erro ao excluir";
+			}
 		}
 
 		return mensagem;

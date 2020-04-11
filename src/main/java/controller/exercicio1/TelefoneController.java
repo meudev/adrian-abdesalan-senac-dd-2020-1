@@ -11,9 +11,9 @@ public class TelefoneController {
 	 * Salva um novo telefone, validando os valores informados
 	 * 
 	 * @param novoTelefone o telefone a ser salvo;
-	 * @return uma mensagem informando uma das opÃ§Ãµes a seguir:
+	 * @return uma mensagem informando uma das opções a seguir:
 	 * 
-	 *         (1) hÃ¡ campos para ajustar
+	 *         (1) à campos para ajustar
 	 * 
 	 *         (2) salvo com sucesso
 	 * 
@@ -32,20 +32,20 @@ public class TelefoneController {
 		String mensagem = "";
 
 		if (novoTelefone == null) {
-			mensagem = "Telefone nÃ£o foi criado";
+			mensagem = "Telefone não foi criado";
 		} else {
 			if (novoTelefone.getDdd().trim().length() != 2) {
-				mensagem += "Informe o DDD com 2 dÃ­gitos \n";
+				mensagem += "Informe o DDD com 2 dígitos \n";
 			}
 
 			try {
 				Integer.parseInt(novoTelefone.getDdd());
 			} catch (NumberFormatException ex) {
-				mensagem += "O DDD deve ser um NÃšMERO";
+				mensagem += "O DDD deve ser um NÚMERO";
 			}
 		}
 
-		// TODO fazer mais validaÃ§Ãµes
+		// TODO fazer mais validações
 		// Numero
 
 		// Codigo pais

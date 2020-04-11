@@ -64,14 +64,14 @@ public class TelaCadastroEndereco {
 	 */
 	private void initialize() {
 		frmCadastroEnderecos = new JFrame();
-		frmCadastroEnderecos.setTitle("Exclus√£o de endere√ßos");
+		frmCadastroEnderecos.setTitle("Exclus„o de endereÁos");
 		frmCadastroEnderecos.setBounds(100, 100, 310, 200);
 		frmCadastroEnderecos.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmCadastroEnderecos.getContentPane().setLayout(new MigLayout("", "[80px][10px][150px]", "[20px][70px]"));
 		
 		
 		frmCadastroEnderecos = new JFrame();
-		frmCadastroEnderecos.setTitle("Cadastro de endere√ßo");
+		frmCadastroEnderecos.setTitle("Cadastro de endereÁo");
 		frmCadastroEnderecos.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmCadastroEnderecos.setBounds(100, 100, 721, 249);
 		frmCadastroEnderecos.getContentPane().setLayout(new MigLayout("", "[80px][10px][150px]", "[20px][70px]"));
@@ -99,7 +99,7 @@ public class TelaCadastroEndereco {
 		JLabel lblEstado = new JLabel("Estado (*):");
 		frmCadastroEnderecos.add(lblEstado, "8, 6, right, bottom");
 
-		JLabel lblNumero = new JLabel("N√∫mero (*):");
+		JLabel lblNumero = new JLabel("N˙mero (*):");
 		frmCadastroEnderecos.add(lblNumero, "8, 2, right, center");
 
 		JLabel lblCep = new JLabel("CEP (*):");
@@ -143,7 +143,7 @@ public class TelaCadastroEndereco {
 		frmCadastroEnderecos.add(txtNumero, "9, 2, left, top");
 		txtNumero.setColumns(10);
 
-		// O campo est√° sem m√°scara
+		// O campo est· sem m·scara
 		try {
 			MaskFormatter mascaraCep = new MaskFormatter("#####-###");
 
@@ -151,7 +151,7 @@ public class TelaCadastroEndereco {
 			frmCadastroEnderecos.add(txtCep, "9, 4, fill, center");
 
 		} catch (ParseException e) {
-			// TODO por enquanto n√£o vamos tratar
+			// TODO por enquanto n„o vamos tratar
 			e.printStackTrace();
 		}
 
@@ -172,13 +172,13 @@ public class TelaCadastroEndereco {
 		this.txtNumero.setText("");
 		this.txtCep.setText("");
 
-		// Campos com combobox: "setar" o √≠ndice selecionado para -1 (sem item
+		// Campos com combobox: "setar" o Ìndice selecionado para -1 (sem item
 		// selecionado no combo)
 		this.cbSiglaEstado.setSelectedIndex(0);
 	}
 
 	private ArrayList<String> consultarEstados() {
-		// TODO o ideal √© consultar numa tabela estes dados...
+		// TODO o ideal È consultar numa tabela estes dados...
 
 		ArrayList<String> siglasEstados = new ArrayList<String>();
 

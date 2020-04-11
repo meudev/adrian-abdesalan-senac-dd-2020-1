@@ -20,5 +20,5 @@ public class TelefoneBO {
 		return mensagem;
 	}
 
-	// TODO criar os mÃ©todos para chamar os mÃ©todos PÃšBLICOS no TelefoneDAO
+	// TODO criar os métodos para chamar os métodos PÚBLICOS no TelefoneDAO
 }

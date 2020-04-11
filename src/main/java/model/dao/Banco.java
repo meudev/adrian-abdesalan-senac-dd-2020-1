@@ -95,7 +95,7 @@ public class Banco {
 			conn = DriverManager.getConnection(CONEXAO, USER, PASSWORD);
 			return conn;
 		} catch (ClassNotFoundException e) {
-			System.out.println("Classe do Driver n√£o foi encontrada. Causa: " + e.getMessage());
+			System.out.println("Classe do Driver n„o foi encontrada. Causa: " + e.getMessage());
 			return null;
 		} catch (SQLException e) {
 			System.out.println("Erro ao obter a Connection. Causa: " + e.getMessage());
@@ -109,7 +109,7 @@ public class Banco {
 				conn.close();
 			}
 		} catch (SQLException e) {
-			System.out.println("Problema no fechamento da conex√£o. Causa: " + e.getMessage());
+			System.out.println("Problema no fechamento da conex„o. Causa: " + e.getMessage());
 		}
 	}
 

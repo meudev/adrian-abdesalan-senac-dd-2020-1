@@ -12,6 +12,22 @@ public class ClienteBO {
 	public ArrayList<Cliente> pesquisarTodos() {
 		return dao.consultarTodos();
 	}
+	
+	public String excluir(String cpfSelecionado) {
+		String mensagem = "";
 
-	// TODO criar os mÃ©todos para chamar os mÃ©todos PÃšBLICOS no ClienteDAO
+		if (dao.temClienteTemTelefone(cpfSelecionado)) {
+			mensagem = "Cliente informado não pode ser excluí­do, pois existe telefone registrado em seu nome.";
+		} else {
+			if (dao.excluirCPF(cpfSelecionado)) {
+				mensagem = "Excluí­do com sucesso";
+			} else {
+				mensagem = "Erro ao excluir";
+			}
+		}
+
+		return mensagem;
+	}
+
+	// TODO criar os métodos para chamar os métodos PÚBLICOS no ClienteDAO
 }
