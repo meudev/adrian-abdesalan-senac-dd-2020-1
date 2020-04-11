@@ -136,6 +136,14 @@ public class Principal extends JFrame {
 		menuBar.add(mnFuncionrios);
 		
 		JMenuItem mntmCadastar = new JMenuItem("Cadastar");
+		mntmCadastar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				TelaCadastroTelefone cadastrarTelefone = new TelaCadastroTelefone();
+				cadastrarTelefone.frmCadastroTelefones.setVisible(true);	
+				
+			}
+		});
 		mnFuncionrios.add(mntmCadastar);
 		
 		JMenuItem mntmConsultar = new JMenuItem("Consultar");
