@@ -13,12 +13,13 @@ import model.vo.exercicio1.Endereco;
 
 public class EnderecoDAO implements BaseDAO<Endereco> {
 
+	//--------- INSERIR NOVO REGISTRO
 	public Endereco salvar(Endereco novaEntidade) {
 		Connection conexao = Banco.getConnection();
 
-		String sql = " INSERT INTO ENDERECO (CEP, ESTADO, CIDADE, RUA, BAIRRO, NUMERO) " + " VALUES ( "
-				+ novaEntidade.getCep() + ", " + novaEntidade.getEstado() + "," + novaEntidade.getCidade() + ", "
-				+ novaEntidade.getRua() + "," + novaEntidade.getBairro() + "," + novaEntidade.getNumero() + ")";
+		String sql = " INSERT INTO ENDERECO (CEP, ESTADO, CIDADE, RUA, BAIRRO, NUMERO) " + " VALUES ( '"
+				+ novaEntidade.getCep() + "', '" + novaEntidade.getEstado() + "','" + novaEntidade.getCidade() + "', '"
+				+ novaEntidade.getRua() + "','" + novaEntidade.getBairro() + "','" + novaEntidade.getNumero() + "')";
 
 		PreparedStatement statement = Banco.getPreparedStatement(conexao, sql);
 		try {
@@ -29,7 +30,7 @@ public class EnderecoDAO implements BaseDAO<Endereco> {
 				novaEntidade.setId(resultado.getInt(1));
 			}
 		} catch (SQLException e) {
-			System.out.println(" Erro ao salvar novo endereÃ§o. Causa: " + e.getMessage());
+			System.out.println(" Erro ao salvar novo endereço. Causa: " + e.getMessage());
 		}
 
 		return novaEntidade;
@@ -47,7 +48,7 @@ public class EnderecoDAO implements BaseDAO<Endereco> {
 
 			excluiu = (codigoRetornoUpdate == Banco.CODIGO_RETORNO_SUCESSO_EXCLUSAO);
 		} catch (SQLException ex) {
-			System.out.println(" Erro ao excluir endereÃ§o. Id: " + id + " .Causa: " + ex.getMessage());
+			System.out.println(" Erro ao excluir endereço. Id: " + id + " .Causa: " + ex.getMessage());
 		}
 		return excluiu;
 	}
@@ -90,7 +91,7 @@ public class EnderecoDAO implements BaseDAO<Endereco> {
 				enderecoConsultado = construirEnderecoDoResultSet(conjuntoResultante);
 			}
 		} catch (SQLException ex) {
-			System.out.println(" Erro ao consultar endereÃ§o. Id: " + id + " .Causa: " + ex.getMessage());
+			System.out.println(" Erro ao consultar endereço. Id: " + id + " .Causa: " + ex.getMessage());
 		}
 		return enderecoConsultado;
 	}
@@ -106,7 +107,7 @@ public class EnderecoDAO implements BaseDAO<Endereco> {
 			e.setRua(conjuntoResultante.getString("rua"));
 			e.setNumero(conjuntoResultante.getString("numero"));
 		} catch (SQLException ex) {
-			System.out.println(" Erro ao construir endereÃ§o a partir do ResultSet. Causa: " + ex.getMessage());
+			System.out.println(" Erro ao construir endereço a partir do ResultSet. Causa: " + ex.getMessage());
 		}
 		return e;
 	}
@@ -141,7 +142,7 @@ public class EnderecoDAO implements BaseDAO<Endereco> {
 			ResultSet conjuntoResultante = preparedStatement.executeQuery();
 			enderecoJaCadastrado = conjuntoResultante.next();
 		} catch (SQLException ex) {
-			System.out.println(" Erro ao verificar se endereÃ§o consta no banco. Causa: " + ex.getMessage());
+			System.out.println(" Erro ao verificar se endereço consta no banco. Causa: " + ex.getMessage());
 		}
 
 		return enderecoJaCadastrado;

@@ -11,6 +11,7 @@ public class EnderecoBO {
 
 	private EnderecoDAO dao = new EnderecoDAO();
 	
+	//EXCLUIR ENDEREÇO
 	public String excluir(int idSelecionado) {
 		String mensagem = "";
 
@@ -28,6 +29,7 @@ public class EnderecoBO {
 		return mensagem;
 	}
 
+	//SALVAR NO ENDEREÇO
 	public String salvar(Endereco novoEndereco) {
 		String mensagem = "";
 
@@ -42,5 +44,4 @@ public class EnderecoBO {
 		return mensagem;
 	}
 
-	// TODO criar os métodos para chamar os métodos PÚBLICOS no EnderecoDAO
 }

@@ -19,10 +19,12 @@ public class EnderecoController {
 	private EnderecoBO bo = new EnderecoBO();
 	private EnderecoDAO dao = new EnderecoDAO();
 
+	//LISTAR TODOS ENDEREÇOS
 	public ArrayList<Endereco> listarTodosOsEnderecos() {
 		return dao.consultarTodos();
 	}
 
+	//EXCLUIR ENDEREÇO
 	public String excluir(String textoIdSelecionado) {
 		String mensagem = "";
 		try {
@@ -34,13 +36,15 @@ public class EnderecoController {
 		return mensagem;
 	}
 
+	//SALVAR NOVO ENDEREÇO
 	public String salvar(String rua, String bairro, String numero, String cep, String cidade, String estado) {
 		String mensagem = "";
+		
+		cep = cep.replace("-", "");
 
-		// Validações dos campos
+		//VALIDAR DADOS PREENCHIDOS
 		mensagem += validarCampoDeTexto("Rua", rua, TAMANHO_MINIMO_CAMPO_RUA, TAMANHO_MAXIMO_CAMPO_RUA, true);
-		mensagem += validarCampoDeTexto("Cidade", cidade, TAMANHO_MINIMO_CAMPO_CIDADE, TAMANHO_MAXIMO_CAMPO_CIDADE,
-				true);
+		mensagem += validarCampoDeTexto("Cidade", cidade, TAMANHO_MINIMO_CAMPO_CIDADE, TAMANHO_MAXIMO_CAMPO_CIDADE,	true);
 		mensagem += validarCampoDeTexto("Sigla do estado", estado, 2, 2, true);
 
 		if (mensagem.isEmpty()) {
@@ -51,13 +55,19 @@ public class EnderecoController {
 		return mensagem;
 	}
 
+	//VALIDAÇÃO DE CAMPOS
 	private String validarCampoDeTexto(String nomeDoCampo, String valor, int tamanhoMinimo, int tamanhoMaximo, boolean obrigatorio) {
 		String mensagemValidacao = "";
 
-		if (obrigatorio && valor != null && !valor.isEmpty() || valor.length() < tamanhoMinimo || valor.length() > tamanhoMaximo) {
-				mensagemValidacao = nomeDoCampo +"  "+ valor + " deve possuir pelo menos " + tamanhoMinimo + " e no máximo "
-						+ tamanhoMaximo + " caracteres \n";
-			}
+//		if (obrigatorio && valor != null && !valor.isEmpty() || valor.length() < tamanhoMinimo || valor.length() > tamanhoMaximo) {
+//				mensagemValidacao = nomeDoCampo +"  "+ valor + " deve possuir pelo menos " + tamanhoMinimo + " e no máximo "
+//						+ tamanhoMaximo + " caracteres \n";
+//		}
+		
+		if (!obrigatorio && valor == null && valor.isEmpty() || valor.length() < tamanhoMinimo || valor.length() > tamanhoMaximo) {
+		mensagemValidacao = nomeDoCampo +"  "+ valor + " deve possuir pelo menos " + tamanhoMinimo + " e no máximo "
+				+ tamanhoMaximo + " caracteres \n";
+		}
 
 		return mensagemValidacao;
 	}

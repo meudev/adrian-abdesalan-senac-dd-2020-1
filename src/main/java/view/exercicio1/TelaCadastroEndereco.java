@@ -36,9 +36,6 @@ public class TelaCadastroEndereco {
 	private JFormattedTextField txtCep;
 	private JComboBox cbSiglaEstado;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -52,16 +49,10 @@ public class TelaCadastroEndereco {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public TelaCadastroEndereco() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		
 		frmCadastroEnderecos = new JFrame();
@@ -81,63 +72,34 @@ public class TelaCadastroEndereco {
 						FormSpecs.LABEL_COMPONENT_GAP_ROWSPEC, RowSpec.decode("28px"), RowSpec.decode("25px"),
 						RowSpec.decode("29px"), FormSpecs.UNRELATED_GAP_ROWSPEC, RowSpec.decode("16px"), }));
 
+		//RUA
 		JLabel lblRua = new JLabel("Rua (*): ");
 		frmCadastroEnderecos.add(lblRua, "2, 2, right, center");
-
-		JLabel lblBairro = new JLabel("Bairro (*):");
-		frmCadastroEnderecos.add(lblBairro, "2, 4, right, center");
-
-		JLabel lblCidade = new JLabel("Cidade (*):");
-		frmCadastroEnderecos.add(lblCidade, "2, 6, right, center");
-
-		JLabel lblEstado = new JLabel("Estado (*):");
-		frmCadastroEnderecos.add(lblEstado, "8, 6, right, bottom");
-
-		JLabel lblNumero = new JLabel("Número (*):");
-		frmCadastroEnderecos.add(lblNumero, "8, 2, right, center");
-
-		JLabel lblCep = new JLabel("CEP (*):");
-		frmCadastroEnderecos.add(lblCep, "8, 4, right, center");
-
-		JButton btnSalvar = new JButton("Salvar");
-		btnSalvar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				EnderecoController controller = new EnderecoController();
-				String mensagem = controller.salvar(txtRua.getText(), txtBairro.getText(), txtNumero.getText(),
-						txtCep.getText(),
-						txtCidade.getText(), (String) cbSiglaEstado.getSelectedItem());
-
-				JOptionPane.showMessageDialog(null, mensagem);
-			}
-		});
-		frmCadastroEnderecos.add(btnSalvar, "2, 8, 3, 1, fill, fill");
-
-		JButton btnLimpar = new JButton("Limpar");
-		btnLimpar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				limparCampos();
-			}
-
-		});
-		frmCadastroEnderecos.add(btnLimpar, "6, 8, 4, 1, fill, fill");
-
+		
 		txtRua = new JTextField();
 		frmCadastroEnderecos.add(txtRua, "4, 2, fill, top");
 		txtRua.setColumns(10);
-
-		txtBairro = new JTextField();
-		frmCadastroEnderecos.add(txtBairro, "4, 4, fill, top");
-		txtBairro.setColumns(10);
-
-		txtCidade = new JTextField();
-		frmCadastroEnderecos.add(txtCidade, "4, 6, fill, top");
-		txtCidade.setColumns(10);
+		
+		//NUMERO
+		JLabel lblNumero = new JLabel("Número (*):");
+		frmCadastroEnderecos.add(lblNumero, "8, 2, right, center");
 
 		txtNumero = new JTextField();
 		frmCadastroEnderecos.add(txtNumero, "9, 2, left, top");
 		txtNumero.setColumns(10);
 
-		// O campo está sem máscara
+		//BAIRRO
+		JLabel lblBairro = new JLabel("Bairro (*):");
+		frmCadastroEnderecos.add(lblBairro, "2, 4, right, center");
+		
+		txtBairro = new JTextField();
+		frmCadastroEnderecos.add(txtBairro, "4, 4, fill, top");
+		txtBairro.setColumns(10);
+		
+		//CEP
+		JLabel lblCep = new JLabel("CEP (*):");
+		frmCadastroEnderecos.add(lblCep, "8, 4, right, center");
+
 		try {
 			MaskFormatter mascaraCep = new MaskFormatter("#####-###");
 
@@ -145,34 +107,67 @@ public class TelaCadastroEndereco {
 			frmCadastroEnderecos.add(txtCep, "9, 4, fill, center");
 
 		} catch (ParseException e) {
-			// TODO por enquanto não vamos tratar
 			e.printStackTrace();
 		}
+		
+		//CIDADE
+		JLabel lblCidade = new JLabel("Cidade (*):");
+		frmCadastroEnderecos.add(lblCidade, "2, 6, right, center");
 
+		txtCidade = new JTextField();
+		frmCadastroEnderecos.add(txtCidade, "4, 6, fill, top");
+		txtCidade.setColumns(10);
+		
+		//ESTADOS
+		JLabel lblEstado = new JLabel("Estado (*):");
+		frmCadastroEnderecos.add(lblEstado, "8, 6, right, bottom");
+		
 		ArrayList<String> siglasEstados = consultarEstados();
 		cbSiglaEstado = new JComboBox(siglasEstados.toArray());
 		frmCadastroEnderecos.add(cbSiglaEstado, "9, 6, fill, fill");
 
-		JLabel lblCamposObrigatorios = new JLabel("(*) campos obrigatÃ³rios");
+		//ALERT CAMPOS OBRIGATÓRIOS
+		JLabel lblCamposObrigatorios = new JLabel("(*) campos obrigatórios");
 		lblCamposObrigatorios.setFont(new Font("Lucida Grande", Font.ITALIC, 11));
 		frmCadastroEnderecos.add(lblCamposObrigatorios, "2, 10, 3, 1, fill, fill");
+		
+		//BUTTON SALVAR
+		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EnderecoController controller = new EnderecoController();
+				String mensagem = controller.salvar(txtRua.getText(), txtBairro.getText(), txtNumero.getText(),
+						txtCep.getText(),
+						txtCidade.getText(), (String) cbSiglaEstado.getSelectedItem());
+				
+				JOptionPane.showMessageDialog(null, mensagem);
+			}
+		});
+		frmCadastroEnderecos.add(btnSalvar, "2, 8, 3, 1, fill, fill");
+		
+		//BUTTON LIMPAR CAMPOS
+		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limparCampos();
+			}
+			
+		});
+		frmCadastroEnderecos.add(btnLimpar, "6, 8, 4, 1, fill, fill");
 	}
 
+	//LIMPAR OS CAMPOS
 	protected void limparCampos() {
-		// Campos de texto: "setar" o texto para ""
 		this.txtRua.setText("");
 		this.txtBairro.setText("");
 		this.txtCidade.setText("");
 		this.txtNumero.setText("");
 		this.txtCep.setText("");
-
-		// Campos com combobox: "setar" o índice selecionado para -1 (sem item
-		// selecionado no combo)
 		this.cbSiglaEstado.setSelectedIndex(0);
 	}
 
+	//MONTAR LISTA DE ESTADOS
 	private ArrayList<String> consultarEstados() {
-		// TODO o ideal é consultar numa tabela estes dados...
 
 		ArrayList<String> siglasEstados = new ArrayList<String>();
 
@@ -184,8 +179,6 @@ public class TelaCadastroEndereco {
 		siglasEstados.add("PR");
 		siglasEstados.add("SC");
 		siglasEstados.add("RS");
-
-		// e assim por diante...
 
 		return siglasEstados;
 	}
