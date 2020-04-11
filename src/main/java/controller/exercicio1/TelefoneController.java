@@ -58,21 +58,16 @@ public class TelefoneController {
 
 	
 	//SALVAR NO TELEFONE
-	public String salvar(String ddd, String numero, Cliente cliente) {
+	public String salvar(String codigoPais, String ddd, String numero, boolean movel, Cliente cliente) {
 		String mensagem = "";
 		
 		mensagem += validarCampoNumerico("DDD", ddd, 2, 2, true);
 		mensagem += validarCampoNumerico("Número", numero, TAMANHO_MINIMO_CAMPO_NUMERO, TAMANHO_MAXIMO_CAMPO_NUMERO, true);
 				
 		if (mensagem.isEmpty()) {
-			boolean movel = false;
-			boolean ativo = false;
-			String codigoPais = "55";
+			boolean ativo  = false;
 			int id = 0;
 			
-			if(numero.length() == 9) {
-				movel = true;
-			}
 			if(cliente != null) {
 				ativo = true;
 			}
