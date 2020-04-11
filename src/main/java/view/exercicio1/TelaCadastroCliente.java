@@ -33,7 +33,7 @@ public class TelaCadastroCliente extends JFrame {
 	private JTextField txtSobrenome;
 	private JLabel lblCpf;
 	private JFormattedTextField txtCpf;
-	private JLabel lblEndereo;
+	private JLabel lblEndereco;
 	private JComboBox cbEnderecos;
 	private JButton btnSalvar;
 	private JButton btnLimpar;
@@ -93,8 +93,8 @@ public class TelaCadastroCliente extends JFrame {
 			e.printStackTrace();
 		}
 		
-		lblEndereo = new JLabel("Endere\u00E7o:");
-		frmCadastroClientes.getContentPane().add(lblEndereo, "cell 0 3");
+		lblEndereco = new JLabel("Endere\u00E7o:");
+		frmCadastroClientes.getContentPane().add(lblEndereco, "cell 0 3");
 		
 		ArrayList<String> enderecos = consultarEnderecos();
 		cbEnderecos = new JComboBox(enderecos.toArray());

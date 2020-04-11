@@ -1,9 +1,13 @@
 package controller.exercicio1;
 
 import model.bo.exercicio1.TelefoneBO;
+import model.vo.exercicio1.Cliente;
 import model.vo.exercicio1.Telefone;
 
 public class TelefoneController {
+	
+	private static final int TAMANHO_MINIMO_CAMPO_NUMERO = 8;
+	private static final int TAMANHO_MAXIMO_CAMPO_NUMERO = 9;
 
 	private TelefoneBO bo = new TelefoneBO();
 
@@ -52,10 +56,44 @@ public class TelefoneController {
 		return mensagem;
 	}
 
-	private String validarCampoNumerico(String valorDoCampo, String nomeDoCampo, int tamanhoMinimo, int tamanhoMaximo) {
-		// TODO desenvolver
+	
+	//SALVAR NO TELEFONE
+	public String salvar(String ddd, String numero, Cliente cliente) {
+		String mensagem = "";
+		
+		mensagem += validarCampoNumerico("DDD", ddd, 2, 2, true);
+		mensagem += validarCampoNumerico("Número", numero, TAMANHO_MINIMO_CAMPO_NUMERO, TAMANHO_MAXIMO_CAMPO_NUMERO, true);
+				
+		if (mensagem.isEmpty()) {
+			boolean movel = false;
+			boolean ativo = false;
+			String codigoPais = "55";
+			int id = 0;
+			
+			if(numero.length() == 9) {
+				movel = true;
+			}
+			if(cliente != null) {
+				ativo = true;
+			}
+			
+			Telefone novoTelefone = new Telefone(id, cliente, codigoPais, ddd, numero, movel, ativo);
+			mensagem = bo.salvar(novoTelefone);
+		}
+		
+		return mensagem;
+	}
+	
+	//VALIDAR DADOS DIGITADOS
+	private String validarCampoNumerico(String nomeDoCampo, String valor, int tamanhoMinimo, int tamanhoMaximo, boolean obrigatorio) {
+		String mensagemValidacao = "";
 
-		return "";
+		if (obrigatorio && valor != null && !valor.isEmpty() || valor.length() < tamanhoMinimo || valor.length() > tamanhoMaximo) {
+				mensagemValidacao = nomeDoCampo +"  "+ valor + " deve possuir pelo menos " + tamanhoMinimo + " e no máximo "
+						+ tamanhoMaximo + " caracteres \n";
+			}
+
+		return mensagemValidacao;
 	}
 
 }

@@ -24,6 +24,7 @@ public class ClienteController {
 	public ArrayList<Cliente> listarTodosOsClientes() {
 		return dao.consultarTodos();
 	}
+	
 
 	//EXCLUIR CLIENTE VIA CPF
 	public String excluirCPF(String textCPF) {
@@ -84,4 +85,5 @@ public class ClienteController {
 		
 		return cpfFormatado;
 	}
+
 }
