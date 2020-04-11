@@ -21,15 +21,12 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class Principal extends JFrame {
 
 	private JPanel contentPane;
 
-	
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -48,10 +45,9 @@ public class Principal extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public Principal() {
+		setFont(new Font("Arial", Font.BOLD, 14));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\FACULDADE\\Eclipse - Senac\\Icones\\icons8-rede-phonelink-24.png"));
 		setTitle("Sistema Telefonia");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 790, 440);
@@ -59,6 +55,7 @@ public class Principal extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
+		//----------- CLIENTES
 		JMenu mnClientes = new JMenu("  Clientes     ");
 		mnClientes.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		mnClientes.setIcon(new ImageIcon("D:\\FACULDADE\\Eclipse - Senac\\Icones\\icons8-contatos-50.png"));
@@ -103,12 +100,14 @@ public class Principal extends JFrame {
 		mntmExcluir_2.setIcon(new ImageIcon("D:\\FACULDADE\\Eclipse - Senac\\Icones\\icons8-remover-usu\u00E1rio-masculino-26.png"));
 		mnClientes.add(mntmExcluir_2);
 		
+		//----------- ENDEREÇOS
 		JMenu mnProdutos = new JMenu("  Endereços     ");
 		mnProdutos.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		mnProdutos.setIcon(new ImageIcon("D:\\FACULDADE\\Eclipse - Senac\\adrian-abdesalan-senac-dd-2020-1\\icones\\icons8-endere\u00E7o-50.png"));
 		menuBar.add(mnProdutos);
 		
 		JMenuItem mntmCadastrar_1 = new JMenuItem("Cadastrar");
+		mntmCadastrar_1.setIcon(new ImageIcon("D:\\FACULDADE\\Eclipse - Senac\\Icones\\icons8-inserir-p\u00E1gina-24.png"));
 		mntmCadastrar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -120,6 +119,7 @@ public class Principal extends JFrame {
 		mnProdutos.add(mntmCadastrar_1);
 		
 		JMenuItem mntmExcluir = new JMenuItem("Excluir");
+		mntmExcluir.setIcon(new ImageIcon("D:\\FACULDADE\\Eclipse - Senac\\Icones\\icons8-excluir-24.png"));
 		mntmExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -130,12 +130,14 @@ public class Principal extends JFrame {
 		});
 		mnProdutos.add(mntmExcluir);
 		
+		//----------- TELEFONES
 		JMenu mnFuncionrios = new JMenu("  Números     ");
 		mnFuncionrios.setIcon(new ImageIcon("D:\\FACULDADE\\Eclipse - Senac\\Icones\\icons8-telefone-celular-50.png"));
 		mnFuncionrios.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		menuBar.add(mnFuncionrios);
 		
 		JMenuItem mntmCadastar = new JMenuItem("Cadastar");
+		mntmCadastar.setIcon(new ImageIcon("D:\\FACULDADE\\Eclipse - Senac\\Icones\\icons8-rede-phonelink-24.png"));
 		mntmCadastar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -147,11 +149,18 @@ public class Principal extends JFrame {
 		mnFuncionrios.add(mntmCadastar);
 		
 		JMenuItem mntmConsultar = new JMenuItem("Consultar");
+		mntmConsultar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				TelaListagemTelefones listarTelefones = new TelaListagemTelefones();
+				listarTelefones.frmListagemTelefones.setVisible(true);
+				
+			}
+		});
+		mntmConsultar.setIcon(new ImageIcon("D:\\FACULDADE\\Eclipse - Senac\\Icones\\icons8-configura\u00E7\u00E3o-de-phonelink-24.png"));
 		mnFuncionrios.add(mntmConsultar);
 		
-		JMenuItem mntmExcluir_1 = new JMenuItem("Excluir");
-		mnFuncionrios.add(mntmExcluir_1);
-		
+		//----------- SOBRE
 		JMenu mnSobre = new JMenu("  Sobre");
 		mnSobre.setIcon(new ImageIcon("D:\\FACULDADE\\Eclipse - Senac\\Icones\\icons8-sobre-50.png"));
 		mnSobre.setFont(new Font("Segoe UI", Font.PLAIN, 16));
@@ -165,9 +174,11 @@ public class Principal extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		JDesktopPane desktopPane = new JDesktopPane();
+		//----------- CORPO
+				JDesktopPane desktopPane = new JDesktopPane();
 		contentPane.add(desktopPane, BorderLayout.CENTER);
 		
+		//----------- FOOTER
 		JLabel lblDesenvolvidoPorAdrian = new JLabel("Desenvolvido por Adrian Salomon Ferreira Abdesalan");
 		lblDesenvolvidoPorAdrian.setFont(new Font("Tahoma", Font.BOLD, 10));
 		lblDesenvolvidoPorAdrian.setToolTipText("");
