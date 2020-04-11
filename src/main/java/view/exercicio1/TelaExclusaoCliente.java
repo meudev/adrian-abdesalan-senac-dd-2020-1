@@ -27,8 +27,7 @@ public class TelaExclusaoCliente extends JFrame {
 
 	JFrame frmExclusaoCliente;
 	private JPanel contentPane;
-	private JFormattedTextField textCPF_;
-	private JTextField textCPF;
+	private JFormattedTextField textCPF;
 
 	/**
 	 * Launch the application.
@@ -68,23 +67,17 @@ public class TelaExclusaoCliente extends JFrame {
 		lblCPF.setBounds(10, 17, 100, 13);
 		frmExclusaoCliente.getContentPane().add(lblCPF, "cell 0 0,alignx trailing");
 		
-		textCPF = new JTextField();
-		frmExclusaoCliente.getContentPane().add(textCPF, "cell 1 0 5 1,growx");
-		textCPF.setColumns(10);
-		
-		/* O campo está sem máscara
 		try {
 		
 			MaskFormatter mascaraCPF = new MaskFormatter("###.###.###-##");
 
-			textCPF_ = new JFormattedTextField(mascaraCPF);
-			frmExclusaoCliente.getContentPane().add(textCPF_, "cell 1 0 3 1,growx");
-			textCPF_.setColumns(10);
+			textCPF = new JFormattedTextField(mascaraCPF);
+			frmExclusaoCliente.getContentPane().add(textCPF, "cell 1 0 5 1,growx");
+			textCPF.setColumns(10);
 			
 		} catch (ParseException ex) {
 		    ex.printStackTrace();
 		}
-		*/
 		
 		
 		JButton btnExcluir = new JButton("Excluir");

@@ -19,29 +19,33 @@ public class ClienteController {
 	private ClienteBO bo = new ClienteBO();
 	private ClienteDAO dao = new ClienteDAO();
 
+	
+	//LISTAR TODOS CLIENTES
 	public ArrayList<Cliente> listarTodosOsClientes() {
 		return dao.consultarTodos();
 	}
 
+	//EXCLUIR CLIENTE VIA CPF
 	public String excluirCPF(String textCPF) {
 		String mensagem = "";
-
+		
+		textCPF = removerFormatacaoCPF(textCPF);
+		
 		if(textCPF.length() == 11) {
 			mensagem = bo.excluirCPF(textCPF);
 		} else {
-			mensagem = "CPF inválido. ";
+			mensagem = "CPF inválido. "+ textCPF;
 		}
 
 		return mensagem;
 	}
-
+	
+	//SALVAR NOVO CLIENTE
 	public String salvar(String nome, String sobrenome, String cpf, String endereco) {
 		String mensagem = "";
 		
-		cpf.replace("-", "");
-		cpf.replace(".", "");
+		cpf = removerFormatacaoCPF(cpf);
 
-		// Validações dos campos
 		mensagem += validarCampoDeTexto("Nome", nome, TAMANHO_MINIMO_CAMPO_NOME, TAMANHO_MAXIMO_CAMPO_NOME, true);
 		mensagem += validarCampoDeTexto("Sobrenome", sobrenome, TAMANHO_MINIMO_CAMPO_SOBRENOME, TAMANHO_MAXIMO_CAMPO_SOBRENOME, true);
 		mensagem += validarCampoDeTexto("CPF", cpf, 11, 11, true);
@@ -54,6 +58,7 @@ public class ClienteController {
 		return mensagem;
 	}
 
+	//VALIDAÇÃO DE CAMPOS
 	private String validarCampoDeTexto(String nomeDoCampo, String valor, int tamanhoMinimo, int tamanhoMaximo, boolean obrigatorio) {
 		String mensagemValidacao = "";
 
@@ -63,5 +68,14 @@ public class ClienteController {
 			}
 
 		return mensagemValidacao;
+	}
+	
+	//RETIRA A FORMATAÇÃO DO CPF
+	private String removerFormatacaoCPF(String cpfFormatado) {
+		
+		cpfFormatado = cpfFormatado.replace(".", "");
+		cpfFormatado = cpfFormatado.replace("-", "");
+		
+		return cpfFormatado;
 	}
 }

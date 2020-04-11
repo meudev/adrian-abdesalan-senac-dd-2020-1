@@ -218,7 +218,7 @@ public class ClienteDAO {
 
 	public boolean temClienteTemTelefone(String cpfSelecionado) {
 		Connection conexao = Banco.getConnection();
-		String sql = " SELECT id FROM telefone WHERE idCliente in ( SELECT id FROM cliente WHERE cpf = '" + cpfSelecionado + "'";
+		String sql = " SELECT id FROM telefone WHERE idCliente in ( SELECT id FROM cliente WHERE cpf = '" + cpfSelecionado + "')";
 		PreparedStatement stmt = Banco.getPreparedStatement(conexao, sql);
 
 		boolean temTelefone = false;

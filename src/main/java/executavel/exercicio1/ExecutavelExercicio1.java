@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 import controller.exercicio1.ClienteController;
 import controller.exercicio1.TelefoneController;
-import model.bo.ClienteBO;
+import model.bo.exercicio1.ClienteBO;
 import model.dao.exercicio1.EnderecoDAO;
 import model.vo.exercicio1.Cliente;
 import model.vo.exercicio1.Endereco;
