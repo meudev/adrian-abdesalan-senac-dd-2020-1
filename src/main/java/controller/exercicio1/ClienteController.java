@@ -41,7 +41,7 @@ public class ClienteController {
 	}
 	
 	//SALVAR NOVO CLIENTE
-	public String salvar(String nome, String sobrenome, String cpf, String endereco) {
+	public String salvar(String nome, String sobrenome, String cpf, Endereco endereco) {
 		String mensagem = "";
 		
 		cpf = removerFormatacaoCPF(cpf);
@@ -49,11 +49,17 @@ public class ClienteController {
 		mensagem += validarCampoDeTexto("Nome", nome, TAMANHO_MINIMO_CAMPO_NOME, TAMANHO_MAXIMO_CAMPO_NOME, true);
 		mensagem += validarCampoDeTexto("Sobrenome", sobrenome, TAMANHO_MINIMO_CAMPO_SOBRENOME, TAMANHO_MAXIMO_CAMPO_SOBRENOME, true);
 		mensagem += validarCampoDeTexto("CPF", cpf, 11, 11, true);
-
-		if (mensagem.isEmpty()) {
-			Cliente novoCliente = new Cliente(nome, sobrenome, cpf, null, null);
-			mensagem = bo.salvar(novoCliente);
+		
+		if(endereco != null) {
+			mensagem += "Selecione um endereço";
+		} else {
+		
+			if (mensagem.isEmpty()) {
+				Cliente novoCliente = new Cliente(nome, sobrenome, cpf, null, null);
+				mensagem = bo.salvar(novoCliente);
+			}
 		}
+
 
 		return mensagem;
 	}

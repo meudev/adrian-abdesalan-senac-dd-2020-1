@@ -112,7 +112,7 @@ public class TelaCadastroCliente extends JFrame {
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ClienteController controller = new ClienteController();
-				String mensagem = controller.salvar(txtNome.getText(), txtSobrenome.getText(), txtCpf.getText(), (String) cbEnderecos.getSelectedItem());
+				String mensagem = controller.salvar(txtNome.getText(), txtSobrenome.getText(), txtCpf.getText(), (Endereco) cbEnderecos.getSelectedItem());
 
 				JOptionPane.showMessageDialog(null, mensagem);
 			}
