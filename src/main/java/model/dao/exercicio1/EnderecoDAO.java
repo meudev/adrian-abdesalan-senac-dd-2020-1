@@ -125,7 +125,7 @@ public class EnderecoDAO implements BaseDAO<Endereco> {
 				enderecos.add(enderecoConsultado);
 			}
 		} catch (SQLException ex) {
-			System.out.println(" Erro ao consultar endereÃ§os. Causa: " + ex.getMessage());
+			System.out.println(" Erro ao consultar endereços. Causa: " + ex.getMessage());
 		}
 		return enderecos;
 	}

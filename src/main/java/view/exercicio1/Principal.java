@@ -65,11 +65,20 @@ public class Principal extends JFrame {
 		menuBar.add(mnClientes);
 		
 		JMenuItem mntmCadastrar = new JMenuItem("Cadastrar");
+		mntmCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				TelaCadastroCliente cadastrarClientes = new TelaCadastroCliente();
+				cadastrarClientes.frmCadastroClientes.setVisible(true);	
+			
+			}
+		});
 		mntmCadastrar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
-		mntmCadastrar.setIcon(new ImageIcon("D:\\FACULDADE\\Eclipse - Senac\\Icones\\icons8-usuário-verificado-masculino-26.png"));
+		mntmCadastrar.setIcon(new ImageIcon("D:\\FACULDADE\\Eclipse - Senac\\Icones\\icons8-usu\u00E1rio-verificado-masculino-26.png"));
 		mnClientes.add(mntmCadastrar);
 		
 		JMenuItem mntmListar = new JMenuItem("Listar");
+		mntmListar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, InputEvent.CTRL_MASK));
 		mntmListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -78,7 +87,7 @@ public class Principal extends JFrame {
 
 			}
 		});
-		mntmListar.setIcon(new ImageIcon("D:\\FACULDADE\\Eclipse - Senac\\Icones\\icons8-cardápio-26.png"));
+		mntmListar.setIcon(new ImageIcon("D:\\FACULDADE\\Eclipse - Senac\\Icones\\icons8-card\u00E1pio-26.png"));
 		mnClientes.add(mntmListar);
 		
 		JMenuItem mntmExcluir_2 = new JMenuItem("Excluir");
@@ -91,16 +100,12 @@ public class Principal extends JFrame {
 			}
 		});
 		mntmExcluir_2.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.CTRL_MASK));
-		mntmExcluir_2.setIcon(new ImageIcon("D:\\FACULDADE\\Eclipse - Senac\\Icones\\icons8-remover-usuário-masculino-26.png"));
+		mntmExcluir_2.setIcon(new ImageIcon("D:\\FACULDADE\\Eclipse - Senac\\Icones\\icons8-remover-usu\u00E1rio-masculino-26.png"));
 		mnClientes.add(mntmExcluir_2);
-		
-		JMenuItem mntmRelatrio = new JMenuItem("Relat�rio");
-		mntmRelatrio.setIcon(new ImageIcon("D:\\FACULDADE\\Eclipse - Senac\\Icones\\icons8-documento-26.png"));
-		mnClientes.add(mntmRelatrio);
 		
 		JMenu mnProdutos = new JMenu("  Endere�os     ");
 		mnProdutos.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		mnProdutos.setIcon(new ImageIcon("D:\\FACULDADE\\Eclipse - Senac\\Icones\\icons8-endereço-50.png"));
+		mnProdutos.setIcon(new ImageIcon("D:\\FACULDADE\\Eclipse - Senac\\adrian-abdesalan-senac-dd-2020-1\\icones\\icons8-endere\u00E7o-50.png"));
 		menuBar.add(mnProdutos);
 		
 		JMenuItem mntmCadastrar_1 = new JMenuItem("Cadastrar");

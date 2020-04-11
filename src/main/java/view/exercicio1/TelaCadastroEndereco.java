@@ -63,12 +63,6 @@ public class TelaCadastroEndereco {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmCadastroEnderecos = new JFrame();
-		frmCadastroEnderecos.setTitle("Exclusão de endereços");
-		frmCadastroEnderecos.setBounds(100, 100, 310, 200);
-		frmCadastroEnderecos.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frmCadastroEnderecos.getContentPane().setLayout(new MigLayout("", "[80px][10px][150px]", "[20px][70px]"));
-		
 		
 		frmCadastroEnderecos = new JFrame();
 		frmCadastroEnderecos.setTitle("Cadastro de endereço");

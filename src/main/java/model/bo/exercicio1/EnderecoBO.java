@@ -1,13 +1,16 @@
 package model.bo.exercicio1;
 
+import java.util.ArrayList;
+
 import model.dao.exercicio1.ClienteDAO;
 import model.dao.exercicio1.EnderecoDAO;
+import model.vo.exercicio1.Cliente;
 import model.vo.exercicio1.Endereco;
 
 public class EnderecoBO {
 
 	private EnderecoDAO dao = new EnderecoDAO();
-
+	
 	public String excluir(int idSelecionado) {
 		String mensagem = "";
 
