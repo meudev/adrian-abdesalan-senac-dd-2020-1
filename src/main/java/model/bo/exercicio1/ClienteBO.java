@@ -6,11 +6,7 @@ import model.vo.exercicio1.Cliente;
 public class ClienteBO {
 
 	private ClienteDAO dao = new ClienteDAO();
-	/**
-	 * Tenta salvar um cliente novo, validando o CPF
-	 * @param cliente o Cliente a ser salvo no banco
-	 * @return
-	 */
+
 	public String salvar(Cliente cliente) {
 		String mensagem = "";
 		

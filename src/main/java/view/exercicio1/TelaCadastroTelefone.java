@@ -17,6 +17,7 @@ import controller.exercicio1.EnderecoController;
 import controller.exercicio1.TelefoneController;
 import model.vo.exercicio1.Cliente;
 import model.vo.exercicio1.Endereco;
+import model.vo.exercicio1.Telefone;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.ButtonGroup;
@@ -120,6 +121,7 @@ public class TelaCadastroTelefone extends JFrame {
 		
 			ClienteController controller = new ClienteController();
 			ArrayList<Cliente> clientes = controller.listarTodosOsClientes();
+			
 			cbClientes = new JComboBox(clientes.toArray());
 			frmCadastroTelefones.getContentPane().add(cbClientes, "cell 2 8,alignx left");
 		

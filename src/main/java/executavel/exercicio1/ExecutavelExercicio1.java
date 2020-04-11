@@ -18,7 +18,7 @@ public class ExecutavelExercicio1 {
 
 		// executarExercicio2();
 
-		executarExercicio3();
+		executarExercicio2();
 	}
 
 	/**
@@ -99,6 +99,8 @@ public class ExecutavelExercicio1 {
 		Object[] enderecos = listaEnderecos.toArray();
 		Endereco enderecoSelecionado = (Endereco) JOptionPane.showInputDialog(null, "Selecione um endereço", "Endereço",
 				JOptionPane.QUESTION_MESSAGE, null, enderecos, null);
+		
+		JOptionPane.showMessageDialog(null, enderecoSelecionado);
 
 		Cliente novoCliente = new Cliente(nome, sobrenome, cpf, new ArrayList<Telefone>(), enderecoSelecionado);
 

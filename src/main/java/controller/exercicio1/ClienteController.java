@@ -2,11 +2,13 @@ package controller.exercicio1;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
 
 import model.bo.exercicio1.ClienteBO;
 import model.dao.exercicio1.ClienteDAO;
 import model.vo.exercicio1.Cliente;
 import model.vo.exercicio1.Endereco;
+import model.vo.exercicio1.Telefone;
 
 public class ClienteController {
 
@@ -56,7 +58,8 @@ public class ClienteController {
 		} else {
 		
 			if (mensagem.isEmpty()) {
-				Cliente novoCliente = new Cliente(nome, sobrenome, cpf, null, null);
+				Cliente novoCliente = new Cliente(nome, sobrenome, cpf, new ArrayList<Telefone>(), endereco);
+				
 				mensagem = bo.salvar(novoCliente);
 			}
 		}

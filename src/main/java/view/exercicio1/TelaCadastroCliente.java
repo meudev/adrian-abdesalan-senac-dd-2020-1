@@ -18,6 +18,7 @@ import javax.swing.text.MaskFormatter;
 import controller.ControladoraUsuario;
 import controller.exercicio1.ClienteController;
 import controller.exercicio1.EnderecoController;
+import model.dao.exercicio1.EnderecoDAO;
 import model.vo.TipoUsuarioVO;
 import model.vo.exercicio1.Endereco;
 import net.miginfocom.swing.MigLayout;
@@ -112,6 +113,7 @@ public class TelaCadastroCliente extends JFrame {
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ClienteController controller = new ClienteController();
+							
 				String mensagem = controller.salvar(txtNome.getText(), txtSobrenome.getText(), txtCpf.getText(), (Endereco) cbEnderecos.getSelectedItem());
 
 				JOptionPane.showMessageDialog(null, mensagem);
@@ -128,7 +130,7 @@ public class TelaCadastroCliente extends JFrame {
 		ArrayList<Endereco> listEnderecos = controller.listarTodosOsEnderecos();
 		
 		for(int i = 0; i < listEnderecos.size(); i++) {
-			enderecos.add(listEnderecos.toString());
+			enderecos.add(listEnderecos.get(i).toString());
 		}
 		
 		return enderecos;
