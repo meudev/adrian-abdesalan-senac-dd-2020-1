@@ -21,8 +21,13 @@ import javax.swing.SwingConstants;
 public class Principal_JPanel extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private PainelCadastroCliente painelCadastrarClientes;
+	private PainelCadastroCliente cadastrarClientes;
 	private PainelListagemClientes listarClientes;
+	private PainelExclusaoCliente exlcuirClientes;
+	private PainelCadastroEndereco cadastarEndereco;
+	private PainelExclusaoEndereco excluirEndereco;
+	private PainelCadastroTelefone cadastrarTelefone;
+	private PainelListagemTelefones listarTelefones;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -59,8 +64,8 @@ public class Principal_JPanel extends JFrame {
 		mntmCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				painelCadastrarClientes = new PainelCadastroCliente();
-				setContentPane(painelCadastrarClientes);
+				cadastrarClientes = new PainelCadastroCliente();
+				setContentPane(cadastrarClientes);
 				revalidate();
 				
 			}
@@ -88,8 +93,9 @@ public class Principal_JPanel extends JFrame {
 		mntmExcluir_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				TelaExclusaoCliente exlcuirClientes = new TelaExclusaoCliente();
-				exlcuirClientes.frmExclusaoCliente.setVisible(true);				
+				exlcuirClientes = new PainelExclusaoCliente();
+				setContentPane(exlcuirClientes);
+				revalidate();				
 
 			}
 		});
@@ -108,8 +114,9 @@ public class Principal_JPanel extends JFrame {
 		mntmCadastrar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				TelaCadastroEndereco cadastrarClientes = new TelaCadastroEndereco();
-				cadastrarClientes.frmCadastroEnderecos.setVisible(true);	
+				cadastarEndereco = new PainelCadastroEndereco();
+				setContentPane(cadastarEndereco);
+				revalidate();	
 				
 			}
 		});
@@ -120,8 +127,9 @@ public class Principal_JPanel extends JFrame {
 		mntmExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				TelaExclusaoEndereco excluirEndereco = new TelaExclusaoEndereco();
-				excluirEndereco.frmExclusaoEnderecos.setVisible(true);	
+				excluirEndereco = new PainelExclusaoEndereco();
+				setContentPane(excluirEndereco);
+				revalidate();	
 				
 			}
 		});
@@ -138,9 +146,9 @@ public class Principal_JPanel extends JFrame {
 		mntmCadastar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-//				TelaCadastroTelefone cadastrarTelefone = new TelaCadastroTelefone();
-
-
+				cadastrarTelefone = new PainelCadastroTelefone();
+				setContentPane(cadastrarTelefone);
+				revalidate();	
 				
 			}
 		});
@@ -150,8 +158,9 @@ public class Principal_JPanel extends JFrame {
 		mntmConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				TelaListagemTelefones listarTelefones = new TelaListagemTelefones();
-				listarTelefones.frmListagemTelefones.setVisible(true);
+				listarTelefones = new PainelListagemTelefones();
+				setContentPane(listarTelefones);
+				revalidate();	
 				
 			}
 		});
@@ -167,13 +176,6 @@ public class Principal_JPanel extends JFrame {
 		JMenuItem mntmManual = new JMenuItem("Manual");
 		mntmManual.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F10, 0));
 		mnSobre.add(mntmManual);
-		
-//		//----------- CORPO
-//		desktopPane = new JDesktopPane();
-//		
-//		desktopPane.setBackground(Color.GRAY);
-//		desktopPane.setBounds(5, 5, 1000, 800);
-//		getContentPane().add(desktopPane);
 		
 		//----------- FOOTER
 		JLabel lblDesenvolvidoPorAdrian = new JLabel("Desenvolvido por Adrian Salomon Ferreira Abdesalan");

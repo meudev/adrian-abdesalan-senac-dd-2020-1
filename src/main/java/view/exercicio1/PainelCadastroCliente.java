@@ -13,10 +13,13 @@ import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -26,7 +29,7 @@ public class PainelCadastroCliente extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JTextField txtNome;
 	private JTextField txtSobrenome;
-	private JTextField txtCPF;
+	private JFormattedTextField txtCPF;
 	private JComboBox cbEnderecos;
 
 	public PainelCadastroCliente() {
@@ -55,9 +58,17 @@ public class PainelCadastroCliente extends JPanel {
 		JLabel lblCpf = new JLabel("CPF:");
 		add(lblCpf, "2, 6, right, default");
 		
-		txtCPF = new JTextField();
-		add(txtCPF, "4, 6, fill, default");
-		txtCPF.setColumns(10);
+		try {
+			
+			MaskFormatter mascaraCPF = new MaskFormatter("###.###.###-##");
+
+			txtCPF = new JFormattedTextField(mascaraCPF);
+			add(txtCPF, "4, 6, fill, default");
+			txtCPF.setColumns(10);
+			
+		} catch (ParseException ex) {
+		    ex.printStackTrace();
+		}
 		
 		JLabel lblEndereo = new JLabel("Endere\u00E7o:");
 		add(lblEndereo, "2, 8, right, default");

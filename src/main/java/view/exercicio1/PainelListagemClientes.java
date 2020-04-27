@@ -47,10 +47,6 @@ public class PainelListagemClientes extends JPanel {
 
 	}
 	
-	private void limparTabelaClientes() {
-		tblClientes.setModel(new DefaultTableModel(new Object[][] { nomesColunas, }, nomesColunas));
-	}
-
 	private void atualizarTabelaClientes() {
 		limparTabelaClientes();
 		DefaultTableModel model = (DefaultTableModel) tblClientes.getModel();
@@ -65,6 +61,10 @@ public class PainelListagemClientes extends JPanel {
 			model.addRow(novaLinhaDaTabela);
 		}
 
+	}
+	
+	private void limparTabelaClientes() {
+		tblClientes.setModel(new DefaultTableModel(new Object[][] { nomesColunas, }, nomesColunas));
 	}
 
 }
