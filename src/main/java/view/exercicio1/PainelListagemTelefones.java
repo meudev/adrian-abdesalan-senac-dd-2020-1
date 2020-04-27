@@ -9,6 +9,8 @@ import javax.swing.JTable;
 import javax.swing.JButton;
 
 public class PainelListagemTelefones extends JPanel {
+
+	private static final long serialVersionUID = 1L;
 	private JTable tbTelefones;
 
 	public PainelListagemTelefones() {
@@ -26,8 +28,6 @@ public class PainelListagemTelefones extends JPanel {
 		
 		tbTelefones = new JTable();
 		add(tbTelefones, "2, 4, fill, fill");
-		
-		
 
 	}
 
